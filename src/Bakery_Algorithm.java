@@ -97,8 +97,11 @@ class MyThread4 implements Runnable{
 		
 		while(bakery.getCounter()<bakery.getCounterLimit()) {
 			Entry_Protocol(id);
-			bakery.setCounter(bakery.getCounter()+1);
-			System.out.println("Counter Value : "+bakery.getCounter()+" from Thread "+id);
+			if(bakery.getCounter()<bakery.getCounterLimit()) {
+				bakery.setCounter(bakery.getCounter()+1);
+				System.out.println("Counter Value : "+bakery.getCounter()+" from Thread "+id);
+			}
+			
 			Exit_Protocol(id);
 		}
 		

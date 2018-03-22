@@ -64,13 +64,15 @@ class MyThread implements Runnable{
 			while(flag.isLock()) {}
 			flag.setLock(true);
 			//critical selection starts
-			
-				flag.setCounter(flag.getCounter()+1);
+			if(flag.getCounter()<flag.getCounterLimit()) {
+		    	flag.setCounter(flag.getCounter()+1);
 				System.out.println("Counter Value : "+flag.getCounter()+" from Thread "+id);
+		    }
 			
-			
-				flag.setLock(false);
-				//critical selection ends
+		
+		
+			flag.setLock(false);
+			//critical selection ends    
 			
 			// after critical selection 
 			

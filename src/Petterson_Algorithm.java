@@ -103,8 +103,12 @@ class MyThread3 implements Runnable{
 			protocol.setTurn(1-id);
 			while(protocol.getLock().get(1-id) && protocol.getTurn()==1-id) {}
 			// enter critical selection
-			protocol.setCounter(protocol.getCounter()+1);
-			System.out.println("Counter Value : "+protocol.getCounter()+" from Thread "+id);
+			if(protocol.getCounter()<protocol.getCounterLimit())
+			{
+				protocol.setCounter(protocol.getCounter()+1);
+				System.out.println("Counter Value : "+protocol.getCounter()+" from Thread "+id);
+			}
+			
 			// exit critical selection
 			protocol.getLock().set(id,false);
 			//after critical selection

@@ -71,8 +71,11 @@ class MyThread2 implements Runnable{
 			// before critical selection
 	        while(lock.getTurn()!=id) {}
 			// entered critical selection
-			lock.setCounter(lock.getCounter()+1);
-			System.out.println("Counter Value : "+lock.getCounter()+" from Thread "+id);
+	        if(lock.getCounter()<lock.getCounterLimit()) {
+	        	lock.setCounter(lock.getCounter()+1);
+				System.out.println("Counter Value : "+lock.getCounter()+" from Thread "+id);
+	        }
+			
 			// exit critical selection
 		    lock.setTurn((id+1)%lock.getNumberOfThreads());
 		    //after critical selection
