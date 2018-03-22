@@ -1,14 +1,15 @@
 
 public class Boolean_Flag {
 	
-	private int numberOfThreads=2;
+	private int numberOfThreads;
 	private int counter = 0;
 	private boolean lock = false;
 	private int counterLimit;
 
-	public Boolean_Flag(int counterLimit) {
+	public Boolean_Flag(int counterLimit,int numberOfThreads) {
 		super();
 		this.counterLimit=counterLimit;
+		this.numberOfThreads=numberOfThreads;
 		
 		for(int i=0;i<numberOfThreads;i++){
 			new Thread(new MyThread(i,this)).start();

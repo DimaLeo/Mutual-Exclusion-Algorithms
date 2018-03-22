@@ -3,7 +3,7 @@ import java.util.Collections;
 
 public class Bakery_Algorithm {
 	
-	private int numberOfThreads = 2;
+	private int numberOfThreads;
 	private ArrayList<Boolean> choosing = new ArrayList<Boolean>(); // holds  a value for the thread that wants to get in its critical area
 	private ArrayList<Integer> num = new ArrayList<Integer>(); // priority number
 	
@@ -11,9 +11,10 @@ public class Bakery_Algorithm {
 	private int counterLimit;
 	
 	
-	public Bakery_Algorithm(int counterLimit) {
+	public Bakery_Algorithm(int counterLimit,int numberOfThreads) {
 		super();
 		this.counterLimit = counterLimit;
+		this.numberOfThreads=numberOfThreads;
 		for(int i = 0;i<numberOfThreads;i++) {
 			choosing.add(false);
 			num.add(0);
